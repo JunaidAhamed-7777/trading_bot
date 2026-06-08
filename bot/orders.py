@@ -7,6 +7,7 @@ from bot.validators import (
 )
 from bot.client import BinanceFuturesClient
 from bot.logging_config import setup_logger
+from requests.exceptions import RequestException
 
 class OrderService:
     def __init__(self):
@@ -53,8 +54,10 @@ class OrderService:
         except BinanceAPIException as e:
             self.logger.error(f"Error occurred while placing market order: {e}")
             raise
-        except Exception as e:
-            self.logger.error(str(e))
+        except RequestException as e:
+            self.logger.error(
+                f"Network error while communicating with Binance: {e}"
+            )
             raise
     
     def place_limit_order(
@@ -97,6 +100,8 @@ class OrderService:
             self.logger.error(str(e))
             raise
 
-        except Exception as e:
-            self.logger.error(str(e))
+        except RequestException as e:
+            self.logger.error(
+                f"Network error while communicating with Binance: {e}"
+            )
             raise
