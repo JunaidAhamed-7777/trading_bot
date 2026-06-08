@@ -4,10 +4,23 @@ from bot.orders import OrderService
 
 @click.command()
 @click.option("--symbol", required=True)
-@click.option("--side", required=True)
-@click.option("--order-type", required=True)
 @click.option("--quantity", required=True, type=float)
 @click.option("--price", type=float)
+@click.option(
+    "--side",
+    type=click.Choice(
+        ["BUY", "SELL"],
+        case_sensitive=False
+    )
+)
+@click.option(
+    "--order-type",
+    type=click.Choice(
+        ["MARKET", "LIMIT"],
+        case_sensitive=False
+    )
+)
+
 
 def main(
     symbol,
