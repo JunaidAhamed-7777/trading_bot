@@ -1,7 +1,6 @@
-from bot.client import BinanceFuturesClient
+from bot.validators import *
 
-client = BinanceFuturesClient()
-
-account = client.get_account_info()
-
-print(account["totalWalletBalance"])
+print(validate_symbol("btcusdt"))
+print(validate_side("LONG"))
+print(validate_order_type("market"))
+print(validate_quantity(0.001))
