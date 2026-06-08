@@ -1,11 +1,25 @@
 VALID_SIDES = {"BUY", "SELL"}
 VALID_ORDER_TYPES = {"MARKET", "LIMIT"}
 
-def validate_symbol(symbol: str) -> str:
+def validate_symbol(
+    symbol: str,
+    valid_symbols: set[str] | None = None
+) -> str:
+
     symbol = symbol.upper().strip()
 
     if not symbol:
-        raise ValueError("Symbol cannot be empty.")
+        raise ValueError(
+            "Symbol cannot be empty."
+        )
+
+    if (
+        valid_symbols is not None
+        and symbol not in valid_symbols
+    ):
+        raise ValueError(
+            f"Unsupported symbol: {symbol}"
+        )
 
     return symbol
 

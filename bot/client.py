@@ -71,3 +71,5 @@ class BinanceFuturesClient:
             symbol=symbol,
             orderId=order_id
         )
+    def get_exchange_info(self):
+        return self.client.futures_exchange_info()

@@ -13,6 +13,13 @@ class OrderService:
     def __init__(self):
         self.client = BinanceFuturesClient()
         self.logger = setup_logger()
+
+        exchange_info = self.client.get_exchange_info()
+
+        self.valid_symbols = {
+            symbol["symbol"]
+            for symbol in exchange_info["symbols"]
+        }
     def place_market_order(
         self,
         symbol,
@@ -20,7 +27,7 @@ class OrderService:
         quantity
     ):
         try:
-            symbol = validate_symbol(symbol)
+            symbol = validate_symbol(symbol, self.valid_symbols)
             side = validate_side(side)
             quantity = validate_quantity(quantity)
 
@@ -68,7 +75,7 @@ class OrderService:
         price
     ):
         try:
-            symbol = validate_symbol(symbol)
+            symbol = validate_symbol(symbol, self.valid_symbols)
             side = validate_side(side)
             quantity = validate_quantity(quantity)
             price = validate_price(price)
