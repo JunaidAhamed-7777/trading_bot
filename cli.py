@@ -3,7 +3,6 @@ import click
 from bot.orders import OrderService
 
 @click.command()
-@click.option("--symbol", required=True)
 @click.option("--quantity", required=True, type=float)
 @click.option("--price", type=float)
 @click.option(
@@ -19,6 +18,11 @@ from bot.orders import OrderService
         ["MARKET", "LIMIT"],
         case_sensitive=False
     )
+)
+@click.option(
+    "--symbol",
+    required=True,
+    help="Trading pair, e.g. BTCUSDT"
 )
 
 
