@@ -77,27 +77,7 @@ git clone <repository-url>
 cd trading_bot
 ```
 
-### 2. Create a Virtual Environment (Optional)
-
-```bash
-python -m venv venv
-```
-
-Activate:
-
-Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-Linux/macOS:
-
-```bash
-source venv/bin/activate
-```
-
-### 3. Install Dependencies
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
