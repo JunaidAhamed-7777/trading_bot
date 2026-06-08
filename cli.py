@@ -41,6 +41,9 @@ def main(
     quantity,
     price
 ):
+    click.echo("=" * 40)
+    click.echo("Binance Futures Trading Bot by Junaid")
+    click.echo("=" * 40)
     try: 
         service = OrderService()
         order_type = order_type.upper()
