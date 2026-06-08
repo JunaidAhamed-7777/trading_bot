@@ -26,3 +26,30 @@ class BinanceFuturesClient:
         )
     def get_account_info(self):
         return self.client.futures_account()
+    def create_market_order(
+        self,
+        symbol: str,
+        side: str,
+        quantity: float
+    ):
+        return self.client.futures_create_order(
+            symbol=symbol,
+            side=side,
+            type="MARKET",
+            quantity=quantity
+        )
+    def create_limit_order(
+        self,
+        symbol: str,
+        side: str,
+        quantity: float,
+        price: float
+    ):
+        return self.client.futures_create_order(
+            symbol=symbol,
+            side=side,
+            type="LIMIT",
+            quantity=quantity,
+            price=price,
+            timeInForce="GTC"
+        )
