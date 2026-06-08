@@ -70,9 +70,9 @@ def main(
             )
         
         if response["status"] in ["FILLED", "NEW", "PARTIALLY_FILLED"]:
-            click.echo("\nOrder Has Been Placed Successfully",fg = "green" )
+            click.secho("\nOrder Has Been Placed Successfully",fg = "green" )
         
-        click.echo("\nOrder Request Summary", fg = "blue",bold = True)
+        click.secho("\nOrder Request Summary", fg = "blue",bold = True)
         click.echo("---------------------")
         click.echo(f"Symbol: {symbol}")
         click.echo(f"Side: {side}")
@@ -90,6 +90,7 @@ def main(
                 f"Average Price: {response['avgPrice']}"
             )
     except Exception as e:
-        click.echo(f"\nOrder Failed : {e}", fg = "red")
+        click.secho(f"\nOrder Failed : {e}", fg = "red")
+        raise SystemExit(1)
 if __name__ == "__main__":
     main()
