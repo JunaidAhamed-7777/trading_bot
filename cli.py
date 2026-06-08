@@ -53,7 +53,7 @@ def main(
     click.echo(f"Status: {response['status']}")
     click.echo(f"Executed Qty: {response['executedQty']}")
     
-    if "avgPrice" in response:
+    if response.get("avgPrice"):
         click.echo(
             f"Average Price: {response['avgPrice']}"
         )
