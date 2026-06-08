@@ -46,3 +46,43 @@ class OrderService:
         except Exception as e:
             self.logger.error(str(e))
             raise
+    
+    def place_limit_order(
+        self,
+        symbol,
+        side,
+        quantity,
+        price
+    ):
+        try:
+            symbol = validate_symbol(symbol)
+            side = validate_side(side)
+            quantity = validate_quantity(quantity)
+            price = validate_price(price)
+            
+            self.logger.info(
+                f"LIMIT order requested: "
+                f"{symbol} {side} {quantity} @ {price}"
+            )
+
+            response = self.client.create_limit_order(
+                symbol=symbol,
+                side=side,
+                quantity=quantity,
+                price=price
+            )
+
+            self.logger.info(
+                f"Order created successfully: "
+                f"{response['orderId']}"
+            )
+
+            return response
+
+        except BinanceAPIException as e:
+            self.logger.error(str(e))
+            raise
+
+        except Exception as e:
+            self.logger.error(str(e))
+            raise
