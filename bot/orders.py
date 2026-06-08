@@ -8,6 +8,7 @@ from bot.validators import (
 from bot.client import BinanceFuturesClient
 from bot.logging_config import setup_logger
 from requests.exceptions import RequestException
+import time
 
 class OrderService:
     def __init__(self):
@@ -43,21 +44,29 @@ class OrderService:
                 side=side,
                 quantity=quantity
             )
-            
+
             self.logger.info(
                 f"API Response: {response}"
             )
-            
-            self.logger.info(
-                f"Order created successfully: "
-                f"{response['orderId']}"
-            )
-            
-            order_details = self.client.get_order(
-                symbol=symbol,
-                order_id=response['orderId']
-            )
-            return order_details
+
+            try:
+                time.sleep(1)
+
+                order_details = self.client.get_order(
+                    symbol=symbol,
+                    order_id=response["orderId"]
+                )
+
+                self.logger.info(
+                    f"Final Order Details: {order_details}"
+                )
+
+                return order_details
+            except BinanceAPIException as e:
+                self.logger.warning(
+                    f"Could not fetch final order details: {e}"
+                )
+                return response
         except BinanceAPIException as e:
             self.logger.error(f"Error occurred while placing market order: {e}")
             raise
@@ -93,16 +102,25 @@ class OrderService:
             )
 
             self.logger.info(
-                f"Order created successfully: "
-                f"{response['orderId']}"
+                f"API Response: {response}"
             )
 
-            order_details = self.client.get_order(
-                symbol=symbol,
-                order_id=response['orderId']
-            )
-            return order_details
-
+            try:
+                time.sleep(1)
+                order_details = self.client.get_order(
+                    symbol=symbol,
+                    order_id=response["orderId"]
+                )
+                self.logger.info(
+                    f"Final Order Details: {order_details}"
+                )
+                return order_details
+            
+            except BinanceAPIException as e:
+                self.logger.warning(
+                    f"Could not fetch final order details: {e}"
+                )
+                return response
         except BinanceAPIException as e:
             self.logger.error(str(e))
             raise
