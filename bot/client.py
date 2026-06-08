@@ -53,3 +53,12 @@ class BinanceFuturesClient:
             price=price,
             timeInForce="GTC"
         )
+    def get_order(
+        self,
+        symbol: str,
+        order_id: int
+    ):
+        return self.client.futures_get_order(
+            symbol=symbol,
+            orderId=order_id
+        )
