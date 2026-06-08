@@ -1,14 +1,9 @@
-import os
-from dotenv import load_dotenv
-from binance.client import Client
+from bot.logging_config import setup_logger
 
-load_dotenv()
+logger = setup_logger()
 
-client = Client(
-    api_key=os.getenv("BINANCE_API_KEY"),
-    api_secret=os.getenv("BINANCE_API_SECRET")
-)
+logger.info("Application started")
+logger.warning("Test warning")
+logger.error("Test error")
 
-client.FUTURES_URL = "https://testnet.binancefuture.com/fapi"
-
-print(client.futures_account())
+print("Logs written")
