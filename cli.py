@@ -2,7 +2,6 @@ import click
 
 from bot.orders import OrderService
 
-@click.command()
 @click.option("--quantity", required=True, type=float)
 @click.option("--price", type=float)
 @click.option(
@@ -24,7 +23,16 @@ from bot.orders import OrderService
     required=True,
     help="Trading pair, e.g. BTCUSDT"
 )
+@click.command(
+    help="""
+        Place MARKET or LIMIT orders
+        on Binance Futures Testnet.
 
+        Example:
+
+        python cli.py --symbol BTCUSDT --side BUY --order-type MARKET --quantity 0.001
+        """
+)
 
 def main(
     symbol,
