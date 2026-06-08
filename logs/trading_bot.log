@@ -22,3 +22,6 @@
 2026-06-08 23:03:18,630 | INFO | Connected to Binance Futures Testnet
 2026-06-08 23:03:18,630 | INFO | LIMIT order requested: BTCUSDT BUY 0.001 @ 50000.0
 2026-06-08 23:03:19,186 | INFO | Order created successfully: 14512159850
+2026-06-08 23:08:49,622 | INFO | Connected to Binance Futures Testnet
+2026-06-08 23:08:49,623 | INFO | Market Order Requested: BTCUSDT BUY 0.001
+2026-06-08 23:08:50,620 | INFO | Order created successfully: 14512427180

@@ -38,7 +38,12 @@ class OrderService:
                 f"Order created successfully: "
                 f"{response['orderId']}"
             )
-            return response
+            
+            order_details = self.client.get_order(
+                symbol=symbol,
+                order_id=response['orderId']
+            )
+            return order_details
         except BinanceAPIException as e:
             self.logger.error(f"Error occurred while placing market order: {e}")
             raise
@@ -76,7 +81,11 @@ class OrderService:
                 f"{response['orderId']}"
             )
 
-            return response
+            order_details = self.client.get_order(
+                symbol=symbol,
+                order_id=response['orderId']
+            )
+            return order_details
 
         except BinanceAPIException as e:
             self.logger.error(str(e))

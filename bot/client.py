@@ -62,3 +62,12 @@ class BinanceFuturesClient:
             symbol=symbol,
             orderId=order_id
         )
+    def get_order(
+        self,
+        symbol: str,
+        order_id: int
+    ):
+        return self.client.futures_get_order(
+            symbol=symbol,
+            orderId=order_id
+        )
