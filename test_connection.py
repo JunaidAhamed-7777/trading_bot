@@ -1,9 +1,7 @@
-from bot.logging_config import setup_logger
+from bot.client import BinanceFuturesClient
 
-logger = setup_logger()
+client = BinanceFuturesClient()
 
-logger.info("Application started")
-logger.warning("Test warning")
-logger.error("Test error")
+account = client.get_account_info()
 
-print("Logs written")
+print(account["totalWalletBalance"])
