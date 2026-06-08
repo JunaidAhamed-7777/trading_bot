@@ -75,6 +75,9 @@ class OrderService:
                 f"Network error while communicating with Binance: {e}"
             )
             raise
+        except Exception as e:
+            self.logger.error(str(e))
+            raise
     
     def place_limit_order(
         self,
@@ -129,4 +132,7 @@ class OrderService:
             self.logger.error(
                 f"Network error while communicating with Binance: {e}"
             )
+            raise
+        except Exception as e:
+            self.logger.error(str(e))
             raise
