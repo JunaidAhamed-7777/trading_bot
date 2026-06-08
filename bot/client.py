@@ -24,3 +24,5 @@ class BinanceFuturesClient:
         self.logger.info(
             "Connected to Binance Futures Testnet"
         )
+    def get_account_info(self):
+        return self.client.futures_account()
