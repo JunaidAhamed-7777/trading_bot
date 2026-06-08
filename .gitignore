@@ -1,2 +1,4 @@
 .env
-test.py
+test_connection.py
+test_market_order.py
+test_limit_order.py
