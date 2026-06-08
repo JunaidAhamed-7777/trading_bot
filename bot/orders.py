@@ -19,23 +19,30 @@ class OrderService:
         side,
         quantity
     ):
-        symbol = validate_symbol(symbol)
-        side = validate_side(side)
-        quantity = validate_quantity(quantity)
+        try:
+            symbol = validate_symbol(symbol)
+            side = validate_side(side)
+            quantity = validate_quantity(quantity)
 
-        self.logger.info(
-            f"Market Order Requested: "
-            f"{symbol} {side} {quantity}"
-        )
-        
-        response = self.client.create_market_order(
-            symbol=symbol,
-            side=side,
-            quantity=quantity
-        )
-        
-        self.logger.info(
-            f"Order created successfully: "
-            f"{response['orderId']}"
-        )
-        return response
+            self.logger.info(
+                f"Market Order Requested: "
+                f"{symbol} {side} {quantity}"
+            )
+            
+            response = self.client.create_market_order(
+                symbol=symbol,
+                side=side,
+                quantity=quantity
+            )
+            
+            self.logger.info(
+                f"Order created successfully: "
+                f"{response['orderId']}"
+            )
+            return response
+        except BinanceAPIException as e:
+            self.logger.error(f"Error occurred while placing market order: {e}")
+            raise
+        except Exception as e:
+            self.logger.error(str(e))
+            raise
