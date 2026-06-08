@@ -28,3 +28,10 @@
 2026-06-08 23:16:23,050 | INFO | Connected to Binance Futures Testnet
 2026-06-08 23:16:23,051 | INFO | Market Order Requested: BTCUSDT BUY 0.001
 2026-06-08 23:16:24,086 | INFO | Order created successfully: 14512783621
+2026-06-08 23:20:29,133 | INFO | Connected to Binance Futures Testnet
+2026-06-08 23:20:29,134 | INFO | Market Order Requested: BTCUSDT BUY 0.001
+2026-06-08 23:20:29,134 | ERROR | cannot access local variable 'response' where it is not associated with a value
+2026-06-08 23:21:06,916 | INFO | Connected to Binance Futures Testnet
+2026-06-08 23:21:06,917 | INFO | Market Order Requested: BTCUSDT BUY 0.001
+2026-06-08 23:21:07,771 | INFO | API Response: {'orderId': 14512995561, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJ5c9f2c19a757089d083f1d', 'price': '0.00', 'origQty': '0.0010', 'executedQty': '0.0000', 'cumQty': '0.0000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1780941066683}
+2026-06-08 23:21:07,771 | INFO | Order created successfully: 14512995561

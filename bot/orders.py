@@ -28,10 +28,16 @@ class OrderService:
                 f"{symbol} {side} {quantity}"
             )
             
+            
+            
             response = self.client.create_market_order(
                 symbol=symbol,
                 side=side,
                 quantity=quantity
+            )
+            
+            self.logger.info(
+                f"API Response: {response}"
             )
             
             self.logger.info(
