@@ -57,3 +57,6 @@ def main(
         click.echo(
             f"Average Price: {response['avgPrice']}"
         )
+        
+if __name__ == "__main__":
+    main()
