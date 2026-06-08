@@ -47,4 +47,13 @@ def main(
     click.echo(f"Type: {order_type}")
     click.echo(f"Quantity: {quantity}")
     
+    click.echo("\nOrder Response")
+    click.echo("--------------")
+    click.echo(f"Order ID: {response['orderId']}")
+    click.echo(f"Status: {response['status']}")
+    click.echo(f"Executed Qty: {response['executedQty']}")
     
+    if "avgPrice" in response:
+        click.echo(
+            f"Average Price: {response['avgPrice']}"
+        )
